@@ -1,4 +1,4 @@
-## AWS EKS 를 사용하여 Nginx 및 EFK 스택 구축
+## EKS 를 사용한 EFK stack 구축 및 Slack 알림 전송
 
 ### 1. VPC 구성 [(상세링크)](https://www.notion.so/VPC-Bastion-Host-OS-b9f159effd9e4fe39e045ac74755a4c0)
 - 서버 아키텍처<br>
@@ -18,3 +18,11 @@
   - loadbalancer listener 설정
   - loadbalancer inbound port 설정
 - fluentd.yaml 파일 생성하여 배포
+
+### 4. Slack 알림 전송
+- CloudWatch에서 알람 발생 → SNS 푸시 서비스 호출 → Lambda 함수 트리거 → 연동된 Slack 채널로 알람 전송 <br>
+  ![image](https://user-images.githubusercontent.com/23691938/121677006-485dca00-caf0-11eb-9ede-98277ccf7c1c.png)
+  
+- 결과
+  ![cpu-alarm](https://user-images.githubusercontent.com/23691938/121678000-94f5d500-caf1-11eb-954b-58ef405a5992.JPG)
+  ![slack-alarm](https://user-images.githubusercontent.com/23691938/121678009-97f0c580-caf1-11eb-97a0-e81fb9d561d4.JPG)
